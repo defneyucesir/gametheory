@@ -1,0 +1,162 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMG0nHe9FUxZX01OiRUGCip",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/defneyucesir/gametheory/blob/main/Tesseract%20Graph\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 24,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 542
+        },
+        "id": "OCuI3xabDi8q",
+        "outputId": "669e77a4-9c10-466c-ca53-bae95f267dd8"
+      },
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/html": [
+              "<html>\n",
+              "<head><meta charset=\"utf-8\" /></head>\n",
+              "<body>\n",
+              "    <div>            <script src=\"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG\"></script><script type=\"text/javascript\">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: \"STIX-Web\"}});}</script>                <script type=\"text/javascript\">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>\n",
+              "        <script charset=\"utf-8\" src=\"https://cdn.plot.ly/plotly-2.35.2.min.js\"></script>                <div id=\"4afa96de-9090-4873-868e-86de4e037098\" class=\"plotly-graph-div\" style=\"height:525px; width:100%;\"></div>            <script type=\"text/javascript\">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById(\"4afa96de-9090-4873-868e-86de4e037098\")) {                    Plotly.newPlot(                        \"4afa96de-9090-4873-868e-86de4e037098\",                        [{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,0],\"y\":[0,0],\"z\":[0,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,0],\"y\":[0,1],\"z\":[0,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,1],\"y\":[0,1],\"z\":[0,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,1],\"y\":[0,0],\"z\":[0,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,0],\"y\":[0,0],\"z\":[1,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,0],\"y\":[0,1],\"z\":[1,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,1],\"y\":[0,1],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,1],\"y\":[0,0],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,0],\"y\":[1,0],\"z\":[1,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,0],\"y\":[1,1],\"z\":[1,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,1],\"y\":[1,2],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,1],\"y\":[1,1],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,0],\"y\":[1,0],\"z\":[2,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,0],\"y\":[1,1],\"z\":[2,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,1],\"y\":[1,2],\"z\":[2,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[0,1],\"y\":[1,1],\"z\":[2,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,0],\"y\":[1,0],\"z\":[0,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[1,1],\"z\":[0,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[1,2],\"z\":[0,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,2],\"y\":[1,1],\"z\":[0,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,0],\"y\":[1,0],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[1,1],\"z\":[1,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[1,2],\"z\":[1,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,2],\"y\":[1,1],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,0],\"y\":[2,1],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[2,1],\"z\":[1,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[2,2],\"z\":[1,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,2],\"y\":[2,2],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,0],\"y\":[2,1],\"z\":[2,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[2,1],\"z\":[2,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[2,2],\"z\":[2,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,2],\"y\":[2,2],\"z\":[2,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,0],\"y\":[0,0],\"z\":[0,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[0,0],\"z\":[0,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[0,1],\"z\":[0,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,2],\"y\":[0,1],\"z\":[0,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,0],\"y\":[0,0],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[0,0],\"z\":[1,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[0,1],\"z\":[1,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,2],\"y\":[0,1],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,0],\"y\":[1,1],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[1,0],\"z\":[1,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[1,1],\"z\":[1,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,2],\"y\":[1,2],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,0],\"y\":[1,1],\"z\":[2,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[1,0],\"z\":[2,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,1],\"y\":[1,1],\"z\":[2,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[1,2],\"y\":[1,2],\"z\":[2,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,1],\"y\":[1,1],\"z\":[0,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,1],\"y\":[1,0],\"z\":[0,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,2],\"y\":[1,1],\"z\":[0,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,2],\"y\":[1,2],\"z\":[0,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,1],\"y\":[1,1],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,1],\"y\":[1,0],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,2],\"y\":[1,1],\"z\":[1,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,2],\"y\":[1,2],\"z\":[1,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,1],\"y\":[2,2],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,1],\"y\":[2,1],\"z\":[1,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,2],\"y\":[2,1],\"z\":[1,0],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,2],\"y\":[2,2],\"z\":[1,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,1],\"y\":[2,2],\"z\":[2,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,1],\"y\":[2,1],\"z\":[2,2],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,2],\"y\":[2,1],\"z\":[2,1],\"type\":\"scatter3d\"},{\"line\":{\"color\":\"black\",\"width\":2},\"mode\":\"lines\",\"showlegend\":false,\"x\":[2,2],\"y\":[2,2],\"z\":[2,1],\"type\":\"scatter3d\"},{\"hoverinfo\":\"text\",\"marker\":{\"color\":[\"red\",\"green\",\"orange\",\"green\",\"orange\",\"green\",\"orange\",\"green\",\"orange\",\"green\",\"orange\",\"green\",\"orange\",\"green\",\"orange\",\"red\"],\"opacity\":0.8,\"size\":8},\"mode\":\"markers\",\"text\":[\"UK: Defect, US: Defect, China: Defect, EU: Defect\",\"UK: Defect, US: Defect, China: Defect, EU: Cooperate\",\"UK: Defect, US: Defect, China: Cooperate, EU: Defect\",\"UK: Defect, US: Defect, China: Cooperate, EU: Cooperate\",\"UK: Defect, US: Cooperate, China: Defect, EU: Defect\",\"UK: Defect, US: Cooperate, China: Defect, EU: Cooperate\",\"UK: Defect, US: Cooperate, China: Cooperate, EU: Defect\",\"UK: Defect, US: Cooperate, China: Cooperate, EU: Cooperate\",\"UK: Cooperate, US: Defect, China: Defect, EU: Defect\",\"UK: Cooperate, US: Defect, China: Defect, EU: Cooperate\",\"UK: Cooperate, US: Defect, China: Cooperate, EU: Defect\",\"UK: Cooperate, US: Defect, China: Cooperate, EU: Cooperate\",\"UK: Cooperate, US: Cooperate, China: Defect, EU: Defect\",\"UK: Cooperate, US: Cooperate, China: Defect, EU: Cooperate\",\"UK: Cooperate, US: Cooperate, China: Cooperate, EU: Defect\",\"UK: Cooperate, US: Cooperate, China: Cooperate, EU: Cooperate\"],\"x\":[0,0,0,0,1,1,1,1,1,1,1,1,2,2,2,2],\"y\":[0,0,1,1,1,1,2,2,0,0,1,1,1,1,2,2],\"z\":[0,1,1,2,0,1,1,2,0,1,1,2,0,1,1,2],\"type\":\"scatter3d\"}],                        {\"template\":{\"data\":{\"histogram2dcontour\":[{\"type\":\"histogram2dcontour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"choropleth\":[{\"type\":\"choropleth\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"histogram2d\":[{\"type\":\"histogram2d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmap\":[{\"type\":\"heatmap\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmapgl\":[{\"type\":\"heatmapgl\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"contourcarpet\":[{\"type\":\"contourcarpet\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"contour\":[{\"type\":\"contour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"surface\":[{\"type\":\"surface\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"mesh3d\":[{\"type\":\"mesh3d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"scatter\":[{\"fillpattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2},\"type\":\"scatter\"}],\"parcoords\":[{\"type\":\"parcoords\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolargl\":[{\"type\":\"scatterpolargl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"bar\":[{\"error_x\":{\"color\":\"#2a3f5f\"},\"error_y\":{\"color\":\"#2a3f5f\"},\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"bar\"}],\"scattergeo\":[{\"type\":\"scattergeo\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolar\":[{\"type\":\"scatterpolar\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"histogram\":[{\"marker\":{\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"histogram\"}],\"scattergl\":[{\"type\":\"scattergl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatter3d\":[{\"type\":\"scatter3d\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermapbox\":[{\"type\":\"scattermapbox\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterternary\":[{\"type\":\"scatterternary\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattercarpet\":[{\"type\":\"scattercarpet\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"carpet\":[{\"aaxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"baxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"type\":\"carpet\"}],\"table\":[{\"cells\":{\"fill\":{\"color\":\"#EBF0F8\"},\"line\":{\"color\":\"white\"}},\"header\":{\"fill\":{\"color\":\"#C8D4E3\"},\"line\":{\"color\":\"white\"}},\"type\":\"table\"}],\"barpolar\":[{\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"barpolar\"}],\"pie\":[{\"automargin\":true,\"type\":\"pie\"}]},\"layout\":{\"autotypenumbers\":\"strict\",\"colorway\":[\"#636efa\",\"#EF553B\",\"#00cc96\",\"#ab63fa\",\"#FFA15A\",\"#19d3f3\",\"#FF6692\",\"#B6E880\",\"#FF97FF\",\"#FECB52\"],\"font\":{\"color\":\"#2a3f5f\"},\"hovermode\":\"closest\",\"hoverlabel\":{\"align\":\"left\"},\"paper_bgcolor\":\"white\",\"plot_bgcolor\":\"#E5ECF6\",\"polar\":{\"bgcolor\":\"#E5ECF6\",\"angularaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"radialaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"ternary\":{\"bgcolor\":\"#E5ECF6\",\"aaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"baxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"caxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"coloraxis\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"colorscale\":{\"sequential\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"sequentialminus\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"diverging\":[[0,\"#8e0152\"],[0.1,\"#c51b7d\"],[0.2,\"#de77ae\"],[0.3,\"#f1b6da\"],[0.4,\"#fde0ef\"],[0.5,\"#f7f7f7\"],[0.6,\"#e6f5d0\"],[0.7,\"#b8e186\"],[0.8,\"#7fbc41\"],[0.9,\"#4d9221\"],[1,\"#276419\"]]},\"xaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"yaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"scene\":{\"xaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"yaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"zaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2}},\"shapedefaults\":{\"line\":{\"color\":\"#2a3f5f\"}},\"annotationdefaults\":{\"arrowcolor\":\"#2a3f5f\",\"arrowhead\":0,\"arrowwidth\":1},\"geo\":{\"bgcolor\":\"white\",\"landcolor\":\"#E5ECF6\",\"subunitcolor\":\"white\",\"showland\":true,\"showlakes\":true,\"lakecolor\":\"white\"},\"title\":{\"x\":0.05},\"mapbox\":{\"style\":\"light\"}}},\"title\":{\"text\":\"Four-Player Stag Hunt Nash Equilibria (Tesseract Projection)\"},\"scene\":{\"xaxis\":{\"title\":{\"text\":\"UK\"}},\"yaxis\":{\"title\":{\"text\":\"US\"}},\"zaxis\":{\"title\":{\"text\":\"China\"}}},\"showlegend\":false},                        {\"responsive\": true}                    ).then(function(){\n",
+              "                            \n",
+              "var gd = document.getElementById('4afa96de-9090-4873-868e-86de4e037098');\n",
+              "var x = new MutationObserver(function (mutations, observer) {{\n",
+              "        var display = window.getComputedStyle(gd).display;\n",
+              "        if (!display || display === 'none') {{\n",
+              "            console.log([gd, 'removed!']);\n",
+              "            Plotly.purge(gd);\n",
+              "            observer.disconnect();\n",
+              "        }}\n",
+              "}});\n",
+              "\n",
+              "// Listen for the removal of the full notebook cells\n",
+              "var notebookContainer = gd.closest('#notebook-container');\n",
+              "if (notebookContainer) {{\n",
+              "    x.observe(notebookContainer, {childList: true});\n",
+              "}}\n",
+              "\n",
+              "// Listen for the clearing of the current output cell\n",
+              "var outputEl = gd.closest('.output');\n",
+              "if (outputEl) {{\n",
+              "    x.observe(outputEl, {childList: true});\n",
+              "}}\n",
+              "\n",
+              "                        })                };                            </script>        </div>\n",
+              "</body>\n",
+              "</html>"
+            ]
+          },
+          "metadata": {}
+        }
+      ],
+      "source": [
+        "import numpy as np\n",
+        "import plotly.graph_objects as go\n",
+        "from itertools import product\n",
+        "\n",
+        "# Define the vertices of a tesseract (4D hypercube) corresponding to strategies of four players\n",
+        "# 0 = Defect, 1 = Cooperate\n",
+        "vertices = list(product([0, 1], repeat=4))  # All possible (C, D) combinations\n",
+        "\n",
+        "# Define edges (adjacent strategy profiles differing by one player changing strategy)\n",
+        "edges = []\n",
+        "for i, v1 in enumerate(vertices):\n",
+        "    for j, v2 in enumerate(vertices):\n",
+        "        if sum(np.abs(np.array(v1) - np.array(v2))) == 1:\n",
+        "            edges.append((i, j))\n",
+        "\n",
+        "# Convert 4D coordinates to 3D for visualization using a simple projection\n",
+        "projection_matrix = np.array([\n",
+        "    [1, 1, 0, 0],\n",
+        "    [0, 1, 1, 0],\n",
+        "    [0, 0, 1, 1]\n",
+        "])\n",
+        "projected_vertices = [projection_matrix @ np.array(v) for v in vertices]\n",
+        "x, y, z = zip(*projected_vertices)\n",
+        "\n",
+        "# Define Nash equilibria coloring and Player 4 differentiation\n",
+        "colors = []\n",
+        "for v in vertices:\n",
+        "    if v in [(0, 0, 0, 0), (1, 1, 1, 1)]:  # Pure Nash Equilibria\n",
+        "        colors.append('red')\n",
+        "    elif v == (0.5, 0.5, 0.5, 0.5):  # Mixed Strategy Equilibrium\n",
+        "        colors.append('blue')\n",
+        "    else:\n",
+        "        colors.append('green' if v[3] == 1 else 'orange')  # Different colors for Player 4's strategy\n",
+        "\n",
+        "# Create plotly figure\n",
+        "fig = go.Figure()\n",
+        "\n",
+        "# Add edges\n",
+        "for edge in edges:\n",
+        "    i, j = edge\n",
+        "    fig.add_trace(go.Scatter3d(\n",
+        "        x=[x[i], x[j]], y=[y[i], y[j]], z=[z[i], z[j]],\n",
+        "        mode='lines',\n",
+        "        line=dict(color='black', width=2),\n",
+        "        showlegend=False\n",
+        "    ))\n",
+        "import numpy as np\n",
+        "import plotly.graph_objects as go\n",
+        "from itertools import product\n",
+        "\n",
+        "# Add vertices with color-coding for Player 4 and labels for all players\n",
+        "fig.add_trace(go.Scatter3d(\n",
+        "    x=x, y=y, z=z,\n",
+        "    mode='markers',\n",
+        "    marker=dict(size=8, color=colors, opacity=0.8),\n",
+        "    text=[f\"UK: {'Cooperate' if v[0] == 1 else 'Defect'}, \"\n",
+        "          f\"US: {'Cooperate' if v[1] == 1 else 'Defect'}, \"\n",
+        "          f\"China: {'Cooperate' if v[2] == 1 else 'Defect'}, \"\n",
+        "          f\"EU: {'Cooperate' if v[3] == 1 else 'Defect'}\" for v in vertices],\n",
+        "    hoverinfo='text'\n",
+        "))\n",
+        "\n",
+        "# Update layout\n",
+        "fig.update_layout(\n",
+        "    title=\"Four-Player Stag Hunt Nash Equilibria (Tesseract Projection)\",\n",
+        "    scene=dict(\n",
+        "        xaxis_title='UK',\n",
+        "        yaxis_title='US',\n",
+        "        zaxis_title='China'\n",
+        "    ),\n",
+        "    showlegend=False\n",
+        ")\n",
+        "\n",
+        "# Show figure\n",
+        "fig.show()\n",
+        "import plotly.graph_objects as go\n",
+        "from itertools import product\n"
+      ]
+    }
+  ]
+}
