@@ -1,0 +1,159 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyN36P2JR1xLwYKbct9zS927",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/defneyucesir/gametheory/blob/main/Sentiment%20Analysis%20and%20Defining%20Utilities\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "QgPmZgGePm_S"
+      },
+      "outputs": [],
+      "source": [
+        "%%capture\n",
+        "!pip install spacy\n",
+        "!pip install scattertext\n",
+        "!pip install tika\n",
+        "!pip install spacytextblob\n",
+        "!python -m spacy download en_core_web_sm\n",
+        "import spacy\n",
+        "import json\n",
+        "import pylab\n",
+        "from IPython.core.display import display, HTML\n",
+        "import nltk\n",
+        "from tika import parser\n",
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "import matplotlib.pyplot as plt\n",
+        "from spacytextblob.spacytextblob import SpacyTextBlob\n",
+        "\n",
+        "%matplotlib inline\n",
+        "pylab.rcParams['figure.figsize'] = (10., 8.)\n",
+        "nlp = spacy.load(\"en_core_web_sm\")\n",
+        "nlp.add_pipe('spacytextblob')\n",
+        "\n",
+        "import re\n",
+        "def process_urls(csv):\n",
+        "    try:\n",
+        "        df = pd.read_csv(csv)\n",
+        "    except:\n",
+        "        print(f\"Error reading the file\")\n",
+        "        return None\n",
+        "\n",
+        "#Error handling\n",
+        "    if not all(col in df.columns for col in ['Country', 'URL']):\n",
+        "        print(\"Error: 'country' and 'url' columns are required.\")\n",
+        "        return None\n",
+        "\n",
+        "    processed_urls = set()\n",
+        "    results = []\n",
+        "\n",
+        "    for index, row in df.iterrows():\n",
+        "        country = row['Country']\n",
+        "        url = row['URL']\n",
+        "\n",
+        "        if url in processed_urls:\n",
+        "            continue\n",
+        "\n",
+        "#Using TIKA parser\n",
+        "        try:\n",
+        "            raw = parser.from_file(url)\n",
+        "            text = raw['content']\n",
+        "\n",
+        "#Data cleaning\n",
+        "            if text:\n",
+        "                text = \" \".join(text.split())\n",
+        "                text = re.sub(r\"[^a-zA-Z ]+\", \"\", text)\n",
+        "                text = text.lower()\n",
+        "\n",
+        "#Calculate polarity and subjectivity\n",
+        "            if text:\n",
+        "                doc = nlp(text)\n",
+        "                polarity = doc._.blob.polarity\n",
+        "                subjectivity = doc._.blob.subjectivity\n",
+        "\n",
+        "#Classify sentiment based on polarity scores\n",
+        "                if polarity > 0.05 :\n",
+        "                    sentiment_score_classification = \"Positive\"\n",
+        "                elif polarity < -0.05:\n",
+        "                    sentiment_score_classification = \"Negative\"\n",
+        "                else:\n",
+        "                    sentiment_score_classification = \"Neutral\"\n",
+        "\n",
+        "                results.append([country, url, polarity, subjectivity, sentiment_score_classification])\n",
+        "                processed_urls.add(url)\n",
+        "\n",
+        "#Error handling\n",
+        "        except:\n",
+        "            print(f\"Error processing URL\")\n",
+        "            continue\n",
+        "\n",
+        "    new_df = pd.DataFrame(results, columns=['country', 'url', 'polarity', 'subjectivity', 'sentiment_score_classification'])\n",
+        "    return new_df"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "3U9rUy4VQ951"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from google.colab import files\n",
+        "uploaded = files.upload()\n",
+        "\n",
+        "for fn in uploaded.keys():\n",
+        "\n",
+        "  processed_data = process_urls(fn)\n",
+        "\n",
+        "processed_data"
+      ],
+      "metadata": {
+        "id": "F8_lzNPAQ4ap"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "average_sentiment = processed_data['polarity'].mean()\n",
+        "print(f\"Average Sentiment Score: {average_sentiment}\")"
+      ],
+      "metadata": {
+        "id": "Eph0NR7AQ5h3"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
