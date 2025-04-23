@@ -1,0 +1,97 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPS2s84LkCoqQk8yRqgxZG8",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/defneyucesir/gametheory/blob/main/Readability%20Scores\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "id": "HmrUz35PPT-M"
+      },
+      "outputs": [],
+      "source": [
+        "import re\n",
+        "\n",
+        "def mastery_metrics(text):\n",
+        "    # --- Type-Token Ratio ---\n",
+        "    words = text.split()\n",
+        "    ttr = len(set(words)) / len(words) if words else 0\n",
+        "\n",
+        "    # --- Flesch Readability Score (approximate) ---\n",
+        "    sentences = re.split(r'[.!?]', text)\n",
+        "    words_clean = re.findall(r'\\w+', text)\n",
+        "\n",
+        "    def count_syllables(word):\n",
+        "        word = word.lower()\n",
+        "        syllables = re.findall(r'[aeiouy]+', word)\n",
+        "        return max(1, len(syllables))\n",
+        "\n",
+        "    syllable_count = sum(count_syllables(word) for word in words_clean)\n",
+        "    word_count = len(words_clean)\n",
+        "    sentence_count = len([s for s in sentences if s.strip()])\n",
+        "\n",
+        "    if word_count > 0 and sentence_count > 0:\n",
+        "        flesch_score = 206.835 - 1.015 * (word_count / sentence_count) - 84.6 * (syllable_count / word_count)\n",
+        "    else:\n",
+        "        flesch_score = 0\n",
+        "\n",
+        "    return {\n",
+        "        \"Type-Token Ratio\": round(ttr, 3),\n",
+        "        \"Flesch Readability Score\": round(flesch_score, 1)\n",
+        "    }"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "text = \"\"\"\n",
+        "In fact, Descartes anticipates objections that appeal to qualities like solidity or texture in Meditations II, particularly through the wax example. He observes that the wax, when placed near a flame, loses all of its sensory properties — its hardness, shape, even its sound — and yet remains recognisably the same substance. What remains constant, he argues, is its capacity to be extended, figured, and moved. This suggests that extension, unlike solidity, survives changes in external form. For Descartes, this is evidence that extension is grasped not through the senses but by the intellect alone. Therefore, he could respond to the solidity objection by arguing that resistance or impenetrability are contingent, whereas extension is essential. As such, the essence of body lies not in how it feels or behaves, but in its fundamental dimensionality — which alone persists through change.\n",
+        "\"\"\"\n",
+        "\n",
+        "results = mastery_metrics(text)\n",
+        "print(results)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "XozfNjBPPgRB",
+        "outputId": "663c528a-784b-4d0c-81f9-f112891a6bab"
+      },
+      "execution_count": 25,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "{'Type-Token Ratio': 0.736, 'Flesch Readability Score': 23.9}\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
